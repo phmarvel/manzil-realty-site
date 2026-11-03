@@ -105,6 +105,33 @@ export const company = {
   email: 'hello@manzil-realty.example',
 };
 
+// MNZ-4 WhatsApp contact button. Demo numbers (international format, digits only): swap them here.
+// Agents are joined by id; the texts are attached to content.ar / content.en under the same comment.
+export const whatsapp = {
+  agency: '966555010100',
+  agents: { a1: '966555010141', a2: '966555010142', a3: '966555010143' },
+};
+export const whatsappText = {
+  ar: {
+    short: 'واتساب',
+    label: 'تواصل عبر واتساب',
+    agent: 'راسل {name} عبر واتساب',
+    opens: 'يفتح في نافذة جديدة',
+    general: 'مرحباً منزل العقارية، أريد الاستفسار عن عقار في جدة.',
+    hood: 'مرحباً منزل العقارية، أريد الاستفسار عن العقارات في حي {hood}.',
+    agentMsg: 'مرحباً {name}، أريد الاستفسار عن عقار في {areas}.',
+  },
+  en: {
+    short: 'WhatsApp',
+    label: 'Chat on WhatsApp',
+    agent: 'Message {name} on WhatsApp',
+    opens: 'Opens in a new window',
+    general: 'Hello Manzil Realty, I’d like to ask about a home in Jeddah.',
+    hood: 'Hello Manzil Realty, I’d like to ask about homes in {hood}.',
+    agentMsg: 'Hello {name}, I’d like to ask about a home in {areas}.',
+  },
+};
+
 export const content = {
   ar: {
     meta: { title: 'منزل العقارية | عقارات للبيع والإيجار في جدة', description: 'عقارات للبيع والإيجار في جدة بأسعار معلنة وخطوات واضحة. احجز معاينة أو اسأل عن عقار.' },
@@ -202,6 +229,8 @@ export const content = {
         fail: 'لم يصل طلبك. تحقق من اتصالك بالإنترنت ثم أعد المحاولة، أو اتصل بنا على الرقم في أسفل الصفحة.',
       },
     },
+    // MNZ-4 WhatsApp contact button
+    whatsapp: whatsappText.ar,
     footer: {
       about: 'منزل العقارية وسيط عقاري في جدة، يبيع ويؤجّر الشقق والفلل بأسعار معلنة.',
       contactTitle: 'التواصل',
@@ -313,6 +342,8 @@ export const content = {
         fail: 'Your request did not arrive. Check your internet connection and try again, or call us on the number at the bottom of the page.',
       },
     },
+    // MNZ-4 WhatsApp contact button
+    whatsapp: whatsappText.en,
     footer: {
       about: 'Manzil Realty is a real estate broker in Jeddah selling and renting apartments and villas at stated prices.',
       contactTitle: 'Contact',
