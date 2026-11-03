@@ -84,7 +84,7 @@ jobs:
           #!/usr/bin/env bash
           # ReleaseHub agent runner: reads the run's context, runs the coding agent, opens or updates the pull request, reports back.
           set -euo pipefail
-          RH_SCRIPT_VERSION="083276af69b3"
+          RH_SCRIPT_VERSION="3470cd8223a2"
           API="${RH_API%/}"
           EVENTS="$API/api/v1/ai/runner/runs/$RH_RUN/events"
           WORK="${RUNNER_TEMP:-${AGENT_TEMPDIRECTORY:-/tmp}}/releasehub"
@@ -3346,10 +3346,14 @@ jobs:
                   local others
                   others=$(extras_changed)
                   if [ -z "$others" ]; then
-                    # The first change was pushed by an earlier try of this stage, whose report didn't reach ReleaseHub: report it now.
-                    [ "$RH_STAGE" = "coding" ] && [ -n "$(git log --oneline "origin/$RH_BASE..HEAD" 2>/dev/null)" ] \
-                      || fail "The agent finished without changing any files."
-                    log "Nothing new to change: reporting the change pushed earlier to $RH_BRANCH."
+                    # The first change was pushed by an earlier try of this stage, whose report didn't reach ReleaseHub, or a revision found
+                    # nothing left to change (a request it rightly declined, or one already met): report the change on the branch as it is.
+                    [ -n "$(git log --oneline "origin/$RH_BASE..HEAD" 2>/dev/null)" ] || fail "The agent finished without changing any files."
+                    if [ "$RH_STAGE" = "revision" ]; then
+                      log "Nothing to change in this round: the pull request stays as it was. The agent's answer is on the run." warning
+                    else
+                      log "Nothing new to change: reporting the change pushed earlier to $RH_BRANCH."
+                    fi
                   else
                     # A first change has to touch this repository too: its pipeline and the run's main pull request live here.
                     git rev-parse -q --verify "origin/$RH_BRANCH" >/dev/null \
