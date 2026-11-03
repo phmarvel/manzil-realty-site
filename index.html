@@ -85,7 +85,10 @@
     <section id="search" class="relative z-10 -mt-12 lg:-mt-20" aria-labelledby="search-title">
       <div class="wrap">
         <div id="filters" role="search" class="rounded-md border border-hajar bg-paper p-5 shadow-panel lg:p-6">
-          <h2 class="h3 mb-4" id="search-title" data-i18n="search.title">ابحث عن عقار</h2>
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-x-4">
+            <h2 class="h3" id="search-title" data-i18n="search.title">ابحث عن عقار</h2>
+            <p class="text-sm muted" data-i18n="forms.filters.optionalNote">كل الخيارات اختيارية</p>
+          </div>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1fr_1fr_.8fr_auto] lg:items-end">
             <fieldset class="sm:col-span-2 lg:col-span-1">
               <legend class="label" data-i18n="search.legendMode">نوع الصفقة</legend>
@@ -94,10 +97,16 @@
                 <label><input type="radio" name="status" value="rent"><span data-i18n="search.rent">إيجار</span></label>
               </div>
             </fieldset>
-            <div><label class="label" for="f-type" data-i18n="search.type">نوع العقار</label><select class="field" id="f-type" name="type"></select></div>
-            <div><label class="label" for="f-hood" data-i18n="search.hood">الحيّ</label><select class="field" id="f-hood" name="hood"></select></div>
-            <div><label class="label" for="f-price" id="f-price-label"></label><select class="field" id="f-price" name="price"></select></div>
-            <div><label class="label" for="f-beds" data-i18n="search.beds">غرف النوم</label><select class="field" id="f-beds" name="beds"></select></div>
+            <div class="has-pop"><label class="label" for="f-type" data-i18n="search.type">نوع العقار</label><select class="field" id="f-type" name="type" aria-describedby="f-type-hint"></select><p class="hint hint-pop" id="f-type-hint" data-i18n="forms.filters.hintType">اختر نوعاً واحداً، أو «الكل».</p></div>
+            <div class="has-pop"><label class="label" for="f-hood" data-i18n="search.hood">الحيّ</label><select class="field" id="f-hood" name="hood" aria-describedby="f-hood-hint"></select><p class="hint hint-pop" id="f-hood-hint" data-i18n="forms.filters.hintHood">اختر حيّاً واحداً، أو «كل الأحياء».</p></div>
+            <div class="has-pop">
+              <label class="label" for="f-price" id="f-price-label"></label>
+              <input class="field h-12 rtl:text-right" id="f-price" name="price" type="text" inputmode="numeric" enterkeyhint="search" dir="ltr" autocomplete="off" spellcheck="false" list="f-price-list" aria-describedby="f-price-hint f-price-err" data-i18n-attr="placeholder:forms.filters.pricePh" placeholder="مثل 2000000">
+              <datalist id="f-price-list"></datalist>
+              <p class="hint hint-pop" id="f-price-hint"></p>
+              <p class="err" id="f-price-err" hidden></p>
+            </div>
+            <div class="has-pop"><label class="label" for="f-beds" data-i18n="search.beds">غرف النوم</label><select class="field" id="f-beds" name="beds" aria-describedby="f-beds-hint"></select><p class="hint hint-pop" id="f-beds-hint" data-i18n="forms.filters.hintBeds">يعرض العقارات التي فيها هذا العدد من الغرف أو أكثر.</p></div>
             <button type="button" id="f-reset" class="btn btn-line" data-i18n="search.reset">مسح الاختيارات</button>
           </div>
         </div>
@@ -164,8 +173,8 @@
 
         <div class="light-panel rounded-md bg-paper p-5 text-teak shadow-panel sm:p-8">
           <form id="inquiry" novalidate autocomplete="on">
-            <div id="form-errors" role="alert" hidden class="mb-5 rounded-sm border-2 border-henna bg-paper p-4">
-              <p class="flex items-center gap-2 font-bold text-henna"><svg class="size-5 shrink-0" aria-hidden="true"><use href="#i-alert"/></svg><span id="form-errors-title"></span></p>
+            <div id="form-errors" role="group" aria-labelledby="form-errors-title" tabindex="-1" hidden class="mb-5 rounded-sm border-2 border-henna bg-paper p-4">
+              <h3 class="flex items-center gap-2 font-bold text-henna"><svg class="size-5 shrink-0" aria-hidden="true"><use href="#i-alert"/></svg><span id="form-errors-title" data-i18n="contact.form.errorsTitle">راجع الحقول التالية:</span></h3>
               <ul class="mt-2 list-disc ps-6" id="form-errors-list"></ul>
             </div>
             <div id="form-fail" role="alert" hidden class="mb-5 rounded-sm border-2 border-henna bg-paper p-4">
@@ -181,46 +190,62 @@
                   <label><input type="radio" name="intent" value="viewing"><span data-i18n="contact.form.viewing">حجز معاينة</span></label>
                 </div>
               </fieldset>
-              <div>
-                <label class="label" for="c-name" data-i18n="contact.form.name">الاسم الكامل</label>
-                <input class="field" id="c-name" name="name" type="text" autocomplete="name" aria-describedby="c-name-err" required data-i18n-attr="placeholder:contact.form.namePh" placeholder="مثال: سارة العتيبي">
-                <p class="err" id="c-name-err" hidden></p>
-              </div>
-              <div>
-                <label class="label" for="c-phone" data-i18n="contact.form.phone">رقم الجوال</label>
-                <input class="field rtl:text-right" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" aria-describedby="c-phone-hint c-phone-err" required spellcheck="false" placeholder="مثال: 0551234567">
-                <p class="hint" id="c-phone-hint" data-i18n="contact.form.phoneHint">رقم سعودي من عشر خانات، مثل 0551234567</p>
-                <p class="err" id="c-phone-err" hidden></p>
-              </div>
-              <div>
-                <label class="label" for="c-property" data-i18n="contact.form.property">العقار أو الحيّ</label>
-                <select class="field" id="c-property" name="property" aria-describedby="c-property-err" required></select>
-                <p class="err" id="c-property-err" hidden></p>
-              </div>
-              <div id="viewing-fields" hidden class="grid gap-5 sm:grid-cols-2">
+              <fieldset class="space-y-5">
+                <legend class="sr-only" data-i18n="forms.legendContact">بيانات التواصل</legend>
                 <div>
-                  <label class="label" for="c-date" data-i18n="contact.form.date">التاريخ المفضل للمعاينة</label>
-                  <input class="field" id="c-date" name="date" type="date" aria-describedby="c-date-err" autocomplete="off">
-                  <p class="err" id="c-date-err" hidden></p>
+                  <label class="label" for="c-name" data-i18n="contact.form.name">الاسم الكامل</label>
+                  <p class="hint hint-under" id="c-name-hint" data-i18n="forms.hints.name">الاسم الأول واسم العائلة، كما تحب أن يناديك المستشار.</p>
+                  <input class="field" id="c-name" name="name" type="text" dir="auto" autocomplete="name" enterkeyhint="next" aria-describedby="c-name-hint c-name-err" required data-i18n-attr="placeholder:contact.form.namePh" placeholder="مثال: سارة العتيبي">
+                  <p class="err" id="c-name-err" hidden></p>
                 </div>
                 <div>
-                  <label class="label" for="c-time" data-i18n="contact.form.time">الوقت المفضل</label>
-                  <select class="field" id="c-time" name="time" aria-describedby="c-time-err"></select>
-                  <p class="err" id="c-time-err" hidden></p>
+                  <label class="label" for="c-phone" data-i18n="contact.form.phone">رقم الجوال</label>
+                  <p class="hint hint-under" id="c-phone-hint" data-i18n="contact.form.phoneHint">رقم سعودي من عشر خانات، مثل 0551234567</p>
+                  <input class="field max-w-xs rtl:text-right" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" dir="ltr" aria-describedby="c-phone-hint c-phone-err" required spellcheck="false" data-i18n-attr="placeholder:forms.phonePh" placeholder="مثال: 0551234567">
+                  <p class="err" id="c-phone-err" hidden></p>
                 </div>
-              </div>
-              <div>
-                <label class="label" for="c-message" data-i18n="contact.form.message">ملاحظات (اختياري)</label>
-                <textarea class="field" id="c-message" name="message" rows="3" autocomplete="off" data-i18n-attr="placeholder:contact.form.messagePh" placeholder="مثال: أفضّل الطابق الأعلى، وعندي سيارتان."></textarea>
-              </div>
+              </fieldset>
+              <fieldset class="space-y-5">
+                <legend class="sr-only" data-i18n="forms.legendRequest">تفاصيل الطلب</legend>
+                <div>
+                  <label class="label" for="c-property" data-i18n="contact.form.property">العقار أو الحيّ</label>
+                  <p class="hint hint-under" id="c-property-hint" data-i18n="forms.hints.property">اختر عقاراً من القائمة، أو حيّاً، أو «لم أحدد بعد».</p>
+                  <select class="field" id="c-property" name="property" aria-describedby="c-property-hint c-property-err" required></select>
+                  <p class="err" id="c-property-err" hidden></p>
+                </div>
+                <div id="viewing-fields" hidden class="space-y-5">
+                  <div>
+                    <label class="label" for="c-date" data-i18n="contact.form.date">التاريخ المفضل للمعاينة</label>
+                    <p class="hint hint-under" id="c-date-hint" data-i18n="forms.hints.date">اختر يوماً خلال الأشهر الثلاثة القادمة.</p>
+                    <input class="field max-w-xs" id="c-date" name="date" type="date" dir="ltr" aria-describedby="c-date-hint c-date-err" autocomplete="off">
+                    <p class="err" id="c-date-err" hidden></p>
+                  </div>
+                  <fieldset id="c-time" aria-describedby="c-time-hint c-time-err">
+                    <legend class="label" data-i18n="contact.form.time">الوقت المفضل</legend>
+                    <p class="hint hint-under" id="c-time-hint" data-i18n="forms.hints.time">اختر وقتاً واحداً من الأوقات المتاحة.</p>
+                    <div class="chips" id="c-time-opts"></div>
+                    <p class="err" id="c-time-err" hidden></p>
+                  </fieldset>
+                </div>
+                <div>
+                  <label class="label" for="c-message" data-i18n="contact.form.message">ملاحظات (اختياري)</label>
+                  <p class="hint hint-under" id="c-message-hint" data-i18n="forms.hints.message">اختياري: اكتب ما يساعدنا، مثل عدد الغرف أو موعد الانتقال. حتى خمسمائة حرف.</p>
+                  <textarea class="field" id="c-message" name="message" rows="3" dir="auto" autocomplete="off" enterkeyhint="enter" aria-describedby="c-message-hint c-message-err" data-i18n-attr="placeholder:contact.form.messagePh" placeholder="مثال: أفضّل الطابق الأعلى، وعندي سيارتان."></textarea>
+                  <p class="err" id="c-message-err" hidden></p>
+                </div>
+              </fieldset>
             </fieldset>
             <button type="submit" class="btn btn-primary mt-6 w-full sm:w-auto" id="c-submit" data-i18n="contact.form.submit">أرسل الطلب</button>
           </form>
           <div id="form-success" role="status" hidden tabindex="-1" class="rounded-sm border-2 border-bahr p-5">
             <p class="flex items-center gap-2 text-xl font-bold text-bahr"><svg class="size-6 shrink-0" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="contact.form.successTitle">وصلنا طلبك</span></p>
             <p class="mt-3" id="success-text"></p>
+            <p class="mt-3" data-i18n="forms.successNext">يتصل بك أحد مستشارينا خلال يوم عمل واحد. في هذه الأثناء يمكنك متابعة تصفح العقارات.</p>
             <p class="hint" data-i18n="contact.form.successNote">هذه نسخة تجريبية: لم يُرسل أي شيء فعلياً.</p>
-            <button type="button" class="btn btn-line mt-5" id="form-again" data-i18n="contact.form.again">إرسال طلب آخر</button>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a class="btn btn-primary" href="#listings" data-i18n="forms.successLink">العودة إلى العقارات</a>
+              <button type="button" class="btn btn-line" id="form-again" data-i18n="contact.form.again">إرسال طلب آخر</button>
+            </div>
           </div>
         </div>
       </div>
