@@ -4,6 +4,7 @@ import { applyStatic, setLang, onLang, getLang, other, t, tRaw, pick, plural } f
 import { renderNav, initNav, navItems } from './nav.js';
 import { initFilters, renderControls, renderListings, setFilters, countByHood, state } from './filters.js';
 import { initForm, renderForm, prefill } from './form.js';
+import { waCardLink, initWhatsapp } from './whatsapp.js';
 
 const $ = (id) => document.getElementById(id);
 const icon = (id, cls = 'size-5 shrink-0') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
@@ -33,7 +34,8 @@ function renderStatic() {
     </div>
     <p class="mt-4">${pick(a.line)}</p>
     <dl class="mt-4 space-y-1 text-sm"><div class="flex gap-2"><dt class="font-bold">${t('agents.areas')}:</dt><dd>${pick(a.areas)}</dd></div><div class="flex gap-2"><dt class="font-bold">${t('agents.langs')}:</dt><dd>${pick(a.langs)}</dd></div></dl>
-    <a class="btn btn-line mt-6 w-full" href="${tel(a.phone)}">${icon('phone')}<span class="sr-only">${t('agents.call', { name: pick(a.name) })}: </span><bdi dir="ltr" class="num">${a.phone}</bdi></a>
+    ${waCardLink(a)}
+    <a class="btn btn-line mt-3 w-full" href="${tel(a.phone)}">${icon('phone')}<span class="sr-only">${t('agents.call', { name: pick(a.name) })}: </span><bdi dir="ltr" class="num">${a.phone}</bdi></a>
   </li>`).join('');
 
   $('steps').innerHTML = tRaw('contact.steps').map((s, i) => `<li class="flex items-start gap-4"><span class="grid size-9 shrink-0 place-items-center rounded-full border-2 border-hajar font-bold" aria-hidden="true">${i + 1}</span><span class="pt-1">${s}</span></li>`).join('');
@@ -73,4 +75,5 @@ document.addEventListener('click', (e) => {
 
 $('lang-switch').addEventListener('click', () => setLang(other()));
 applyStatic(); initNav(); initFilters(); initForm(); renderAll();
+initWhatsapp();
 onLang(renderAll);
