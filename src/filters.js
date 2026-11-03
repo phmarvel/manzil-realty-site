@@ -1,6 +1,7 @@
 // Search filters and the listing grid. State lives in the URL query (?status=rent&hood=albalad…).
 import { listings, neighbourhoods, photos, photoUrl, priceSteps } from './data/demo.js';
 import { t, tRaw, pick, plural, fmtNum, fmtMoney, getLang } from './i18n.js';
+import { detailHref } from './listing-route.js';
 
 const $ = (id) => document.getElementById(id);
 const form = $('filters');
@@ -45,7 +46,7 @@ function card(l) {
     </div>
     <div class="flex flex-1 flex-col p-5">
       <p class="num text-2xl font-bold text-henna">${fmtMoney(l.price)} <span class="text-sm font-normal text-ink-soft">${note}</span></p>
-      <h3 class="h3 mt-2">${pick(l.title)}</h3>
+      <h3 class="h3 mt-2"><a class="card-link" href="${detailHref(l, state)}">${pick(l.title)}</a></h3>
       <p class="mt-1 flex items-center gap-1 text-ink-soft">${icon('pin')}<span>${hoodName(l.hood)}</span></p>
       <p class="mt-2 text-ink-soft">${pick(l.line)}</p>
       <ul class="num mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-hajar pt-4 text-sm">
