@@ -155,6 +155,27 @@ a, button, summary, label { touch-action: manipulation; }
   .roshan-frame > img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-top-left-radius: 999px; border-top-right-radius: 999px; border-bottom-left-radius: var(--radius-sm); border-bottom-right-radius: var(--radius-sm); background: var(--color-hajar); }
 }
 
+/* === Listing detail pages === */
+@source "../listing.html";
+@layer components {
+  /* Card title link on the landing page: the whole card opens the detail page; the "ask" button stays on top. */
+  .card:has(.card-link) { position: relative; transition: border-color .15s; }
+  .card:has(.card-link:hover) { border-color: var(--color-bahr); }
+  .card-link::after { content: ""; position: absolute; inset: 0; }
+  .card-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .card-link:focus-visible { outline: none; }
+  .card-link:focus-visible::after { outline: 3px solid var(--ring); outline-offset: -3px; border-radius: var(--radius-md); }
+  .card [data-ask] { position: relative; z-index: 1; }
+
+  /* Gallery thumbnails: the current one gets a teal border (bahr on paper/jiss 6.5:1+); focus uses the normal ring. */
+  /* The form column sticks only when the viewport is tall enough to show all of it. */
+  @media (min-width: 64rem) and (min-height: 60rem) { .detail-aside { position: sticky; top: 6rem; } }
+
+  .thumb { transition: border-color .15s; }
+  .thumb:hover { border-color: var(--color-hajar); }
+  .thumb[aria-current="true"]:hover { border-color: var(--color-bahr); }
+}
+
 @layer components {
   .light-panel { --ring: #0F5E63; }
   .on-dark .light-panel :focus-visible { outline-color: var(--ring); }
