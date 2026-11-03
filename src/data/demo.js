@@ -6,13 +6,13 @@ const U = (id, w, h) =>
   `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=70&auto=format`;
 
 // Photos: Unsplash (free licence, `id`) and Wikimedia Commons (CC BY / CC BY-SA, `commons`, copied to assets/img) with credits shown in the footer.
-// Commons photos show real Jeddah (Al-Balad and the waterfront); Unsplash photos show homes and interiors.
+// Commons photos show real Jeddah (Al-Balad, the waterfront and the district tiles); Unsplash photos show homes and interiors.
 export const photos = {
   hero: { commons: { file: 'old-jeddah-roshan-white.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55361084747.jpg' }, alt: { ar: 'مبنى مبيّض بالجير بصناديق رواشين خشبية منحوتة في البلد بجدة', en: 'Lime-plastered building with carved timber roshan boxes in Al-Balad, Jeddah' } },
   p1: { id: '1600596542815-ffad4c1539a9', alt: { ar: 'فيلا بيضاء من طابقين ومسبح أمامها', en: 'Two-storey white villa with a pool in front' } },
   p2: { id: '1600607687939-ce8a6c25118c', alt: { ar: 'صالة معيشة واسعة بأريكة بيضاء وجدار خشبي', en: 'Spacious living room with a white sofa and a timber wall' } },
   p3: { id: '1580587771525-78b9dba3b914', alt: { ar: 'منزل حديث بمسبح ممتد وأسطح بيضاء', en: 'Modern townhouse with a long pool and white terraces' } },
-  p4: { id: '1574362848149-11496d93a7c7', alt: { ar: 'مبنى سكني بشرفات خشبية وزجاجية', en: 'Apartment building with timber and glass balconies' } },
+  p4: { id: '1545324418-cc1a3fa10c00', alt: { ar: 'واجهة عمارة سكنية حديثة بشرفات زجاجية تحت سماء صافية', en: 'Modern residential block with glass balconies under a clear sky' } },
   p5: { id: '1613490493576-7fde63acd811', alt: { ar: 'فيلا بسقف خشبي ومسبح يعكس الضوء', en: 'Villa with a timber roof and a pool catching the light' } },
   p6: { commons: { file: 'old-jeddah-street.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362436320.jpg' }, alt: { ar: 'شارع في البلد ببناء أبيض ونخلة ورواشين داكنة', en: 'Street in Al-Balad with a white building, a palm and dark timber roshans' } },
   p7: { commons: { file: 'jeddah-waterfront-evening.jpg', author: { ar: 'وكالة الأنباء السعودية', en: 'Saudi Press Agency' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:%D9%88%D8%A7%D8%AC%D9%87%D8%A9_%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%AC%D8%AF%D8%A9_%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9_%D9%81%D9%8A_%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%A1.jpg' }, alt: { ar: 'واجهة جدة البحرية في المساء', en: 'Jeddah waterfront in the evening' } },
@@ -22,10 +22,10 @@ export const photos = {
   p11: { commons: { file: 'old-jeddah-restored.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362217344.jpg' }, alt: { ar: 'مبانٍ مرمَّمة في حي البلد التاريخي في وضح النهار', en: 'Restored buildings in the historic Al-Balad district in daylight' } },
   p12: { id: '1556912172-45b7abe8b7e1', alt: { ar: 'مطبخ أبيض مضيء بجزيرة خشبية وكراسي', en: 'Bright white kitchen with a timber island and stools' } },
   n1: { commons: { file: 'old-jeddah-roshan-balconies.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362178648.jpg' }, alt: { ar: 'واجهة بيت قديم بشرفات ورواشين خشبية متراصة في جدة التاريخية', en: 'Old house facade stacked with timber roshan balconies in historic Jeddah' } },
-  n2: { id: '1600566753190-17f0baa2a6c3', alt: { ar: 'منزل حديث بواجهة خشبية وفناء أمامي', en: 'Modern house with a timber facade and a front court' } },
+  n2: { commons: { file: 'alrawdah-street.jpg', author: { ar: 'Mohammad Waqas Ahmad', en: 'Mohammad Waqas Ahmad' }, licence: 'CC BY 3.0', page: 'https://commons.wikimedia.org/wiki/File:Rawdah_District_-_panoramio.jpg' }, alt: { ar: 'شارع في حي الروضة بجدة بنخيل ومبانٍ إدارية', en: 'Street in Al-Rawdah, Jeddah, with palms and office buildings' } },
   n3: { commons: { file: 'jeddah-waterfront-coast.jpg', author: { ar: 'مصوّر غير معروف', en: 'Unknown author' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Jeddah_Waterfront,_Western_Saudi_Arabia_(2026).jpg' }, alt: { ar: 'ساحل جدة على البحر الأحمر وطريق الواجهة البحرية وأبراج المدينة', en: 'Jeddah’s Red Sea coast, the waterfront road and the city towers' } },
-  n4: { id: '1600585154340-be6161a56a0c', alt: { ar: 'منزل بجانب أشجار كبيرة عند الغروب', en: 'House beside large trees at dusk' } },
-  n5: { id: '1486406146926-c627a92ad1ab', alt: { ar: 'أبراج زجاجية من الأسفل نحو السماء', en: 'Glass towers seen from below against the sky' } },
+  n4: { commons: { file: 'obhur-creek.jpg', author: { ar: 'Tahir mq', en: 'Tahir mq' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Obhur_Jeddah_3.jpg' }, alt: { ar: 'قناة أبحر في جدة وفي وسطها منحوتات على شكل ذيول حيتان', en: 'Obhur creek in Jeddah with whale-tail sculptures in the water' } },
+  n5: { commons: { file: 'tahlia-galleria.jpg', author: { ar: 'Ahmed Abdulbasit', en: 'Ahmed Abdulbasit' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Jeddah_galleria.jpg' }, alt: { ar: 'مبنى «غاليريا» بقوسه الكبير ونخيله على شارع التحلية في جدة', en: 'The Galleria building with its large arch and palms on Tahlia Street, Jeddah' } },
 };
 
 // Photo URL for a given display size. Commons photos are self-hosted in assets/img (960px wide copies, credited in the footer).
@@ -39,7 +39,7 @@ export const neighbourhoods = [
   { id: 'alshati', photo: 'n3', name: { ar: 'الشاطئ', en: 'Al-Shati' }, line: { ar: 'قريب من الكورنيش، فلل وشقق بإطلالة على البحر.', en: 'Close to the Corniche, with villas and sea-facing apartments.' } },
   { id: 'alrawdah', photo: 'n2', name: { ar: 'الروضة', en: 'Al-Rawdah' }, line: { ar: 'حيّ سكني هادئ بمدارس وحدائق قريبة.', en: 'A quiet residential district with schools and parks nearby.' } },
   { id: 'obhur', photo: 'n4', name: { ar: 'أبحر', en: 'Obhur' }, line: { ar: 'مساحات أكبر ومنازل بمسابح، شمال المدينة.', en: 'Larger plots and homes with pools, north of the city.' } },
-  { id: 'alhamra', photo: 'n5', name: { ar: 'الحمراء', en: 'Al-Hamra' }, line: { ar: 'شقق قريبة من الطرق الرئيسية والمكاتب.', en: 'Apartments close to main roads and offices.' } },
+  { id: 'alandalus', photo: 'n5', name: { ar: 'الأندلس', en: 'Al-Andalus' }, line: { ar: 'شقق قريبة من شارع التحلية والمكاتب والمقاهي.', en: 'Apartments close to Tahlia Street, offices and cafés.' } },
 ];
 
 // price: in SAR. For rent it is per year. area in m².
@@ -53,8 +53,8 @@ export const listings = [
   { id: 'l3', slug: 'townhouse-obhur-280', status: 'sale', type: 'townhouse', hood: 'obhur', price: 2600000, area: 280, beds: 4, baths: 4, photo: 'p3',
     title: { ar: 'تاون هاوس في أبحر', en: 'Townhouse in Obhur' },
     line: { ar: 'حديقة صغيرة وسطح، على بعد عشر دقائق من البحر.', en: 'Small garden and roof terrace, ten minutes from the sea.' } },
-  { id: 'l4', slug: 'apartment-alhamra-120', status: 'sale', type: 'apartment', hood: 'alhamra', price: 890000, area: 120, beds: 2, baths: 2, photo: 'p4',
-    title: { ar: 'شقة غرفتان في الحمراء', en: 'Two-bedroom apartment in Al-Hamra' },
+  { id: 'l4', slug: 'apartment-alandalus-120', status: 'sale', type: 'apartment', hood: 'alandalus', price: 890000, area: 120, beds: 2, baths: 2, photo: 'p4',
+    title: { ar: 'شقة غرفتان في الأندلس', en: 'Two-bedroom apartment in Al-Andalus' },
     line: { ar: 'شرفة مطلة على الشارع الرئيسي، مناسبة لأسرة صغيرة.', en: 'Balcony on the main street, suited to a small family.' } },
   { id: 'l5', slug: 'villa-alrawdah-350', status: 'sale', type: 'villa', hood: 'alrawdah', price: 3400000, area: 350, beds: 5, baths: 5, photo: 'p5',
     title: { ar: 'فيلا في الروضة', en: 'Villa in Al-Rawdah' },
@@ -68,8 +68,8 @@ export const listings = [
   { id: 'l8', slug: 'villa-obhur-400', status: 'rent', type: 'villa', hood: 'obhur', price: 160000, area: 400, beds: 5, baths: 5, photo: 'p8',
     title: { ar: 'فيلا للإيجار في أبحر', en: 'Villa for rent in Obhur' },
     line: { ar: 'مسبح مشترك مع فيلتين فقط، وملحق للسائق.', en: 'Pool shared with just two other villas, and a driver’s annex.' } },
-  { id: 'l9', slug: 'apartment-alhamra-110', status: 'rent', type: 'apartment', hood: 'alhamra', price: 52000, area: 110, beds: 2, baths: 2, photo: 'p9',
-    title: { ar: 'شقة غرفتان في الحمراء', en: 'Two-bedroom apartment in Al-Hamra' },
+  { id: 'l9', slug: 'apartment-alandalus-110', status: 'rent', type: 'apartment', hood: 'alandalus', price: 52000, area: 110, beds: 2, baths: 2, photo: 'p9',
+    title: { ar: 'شقة غرفتان في الأندلس', en: 'Two-bedroom apartment in Al-Andalus' },
     line: { ar: 'مفروشة جزئياً، ويمكن الدفع على دفعتين.', en: 'Partly furnished; rent can be paid in two instalments.' } },
   { id: 'l10', slug: 'house-albalad-260', status: 'sale', type: 'townhouse', hood: 'albalad', price: 2900000, area: 260, beds: 6, baths: 4, photo: 'p10',
     title: { ar: 'بيت مرمَّم في البلد', en: 'Restored house in Al-Balad' },
@@ -90,12 +90,12 @@ export const agents = [
     line: { ar: 'عشر سنوات في بيع الفلل، ويبدأ كل ملف بمقارنة أسعار الصفقات الأخيرة.', en: 'Ten years selling villas; every file starts with recent comparable sales.' } },
   { id: 'a2', name: { ar: 'ريم الحربي', en: 'Reem Al-Harbi' }, initials: { ar: 'ر ح', en: 'RH' }, phone: '+966 12 555 0142',
     role: { ar: 'مستشارة تأجير', en: 'Leasing advisor' },
-    areas: { ar: 'البلد والحمراء', en: 'Al-Balad and Al-Hamra' },
+    areas: { ar: 'البلد والأندلس', en: 'Al-Balad and Al-Andalus' },
     langs: { ar: 'العربية والإنجليزية', en: 'Arabic and English' },
     line: { ar: 'تشرح بنود العقد قبل التوقيع، وتتابع مع المُلّاك حتى تسليم المفتاح.', en: 'Explains the lease terms before signing and follows up with owners until handover.' } },
   { id: 'a3', name: { ar: 'خالد باكر', en: 'Khalid Baker' }, initials: { ar: 'خ ب', en: 'KB' }, phone: '+966 12 555 0143',
     role: { ar: 'مستشار مبيعات', en: 'Sales advisor' },
-    areas: { ar: 'الروضة والحمراء', en: 'Al-Rawdah and Al-Hamra' },
+    areas: { ar: 'الروضة والأندلس', en: 'Al-Rawdah and Al-Andalus' },
     langs: { ar: 'العربية والإنجليزية والأردية', en: 'Arabic, English and Urdu' },
     line: { ar: 'يتخصص في الشقق للعائلات الأولى، ويشرح خطوات التمويل العقاري بوضوح.', en: 'Focuses on first family apartments and explains the mortgage steps plainly.' } },
 ];
