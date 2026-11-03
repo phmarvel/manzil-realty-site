@@ -30,5 +30,5 @@ Roshan, from Al-Balad in Jeddah. Colours: jiss (lime plaster `#F3EEE4`), hajar (
 ## Credits
 
 - Section structure follows the published patterns of Tailwind UI, Flowbite and HyperUI (MIT) blocks: collapsing navbar, split hero, filter bar, product grid, mosaic, team list, split contact form, multi-column footer. No template code was copied; the markup and look are original to this project.
-- Photos: Unsplash (free licence), listed in the page footer. Photographer names are still to be added (see `.releasehub-context/needs.json`).
+- Photos: Unsplash (free licence, hot-linked) for homes and interiors; real Jeddah photos from Wikimedia Commons, copied into `assets/img/` (the hero, Al-Balad, Al-Shati and the Al-Balad and Al-Shati listings): "Old Jeddah" series by xiquinhosilva (CC BY 4.0), the Jeddah waterfront at evening by the Saudi Press Agency (CC BY-SA 4.0) and a Jeddah coast photo (CC BY-SA 4.0, author not stated). All are credited in the page footer. Unsplash photographer names are still to be added (see `.releasehub-context/needs.json`).
 - Fonts: IBM Plex via Fontsource packages (OFL 1.1).

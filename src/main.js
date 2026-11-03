@@ -12,7 +12,7 @@ const rowLink = 'inline-flex min-h-11 min-w-11 items-center gap-2 rounded-sm hov
 
 function renderStatic() {
   const hero = $('hero-img');
-  hero.src = photoUrl('hero', 640, 800);
+  hero.src = photoUrl('hero', 960, 1200);
   hero.alt = pick(photos.hero.alt);
   $('hero-facts').innerHTML = tRaw('hero.facts').map((f) => `<div><dt class="text-sm muted">${f.k}</dt><dd class="font-bold">${f.v}</dd></div>`).join('');
   const sw = document.querySelector('#lang-switch [data-i18n]');
@@ -44,7 +44,13 @@ function renderStatic() {
     <li><a class="${rowLink}" href="mailto:${company.email}">${icon('mail', 'size-5 shrink-0 text-hajar')}<bdi dir="ltr">${company.email}</bdi></a></li>
     <li class="flex items-start gap-2 py-2">${icon('clock', 'mt-1 size-5 shrink-0 text-hajar')}<span>${t('footer.hours')}</span></li>`;
   $('footer-links').innerHTML = navItems().map((i) => `<li><a class="${rowLink}" href="${i.href}">${i.label}</a></li>`).join('');
-  $('credits').innerHTML = Object.entries(photos).map(([k, p], i) => `<li><a class="inline-flex min-h-11 items-center rounded-sm text-sm underline underline-offset-4 hover:text-hajar" href="https://images.unsplash.com/photo-${p.id}" target="_blank" rel="noopener" title="${pick(p.alt)}">${t('footer.creditsItem', { n: i + 1 })}</a></li>`).join('');
+  $('credits').innerHTML = Object.values(photos).map((p, i) => {
+    const n = i + 1;
+    const c = p.commons;
+    const text = c ? t('footer.creditsItemCommons', { n, author: `<bdi>${pick(c.author)}</bdi>`, licence: `<bdi>${c.licence}</bdi>` }) : t('footer.creditsItem', { n });
+    const href = c ? c.page : `https://images.unsplash.com/photo-${p.id}`;
+    return `<li><a class="inline-flex min-h-11 min-w-11 items-center rounded-sm text-sm underline underline-offset-4 hover:text-hajar" href="${href}" target="_blank" rel="noopener" title="${pick(p.alt)}">${text}</a></li>`;
+  }).join('');
 }
 
 function renderAll() {

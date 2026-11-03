@@ -29,7 +29,7 @@ export function renderControls() {
   $('f-hood').innerHTML = opt('', t('search.anyHood'), !state.hood) + neighbourhoods.map((h) => opt(h.id, pick(h.name), state.hood === h.id)).join('');
   $('f-price').innerHTML = opt('', t('search.anyPrice'), !state.price) + priceSteps[state.status].map((p) => opt(p, fmtMoney(p), String(p) === state.price)).join('');
   $('f-beds').innerHTML = opt('', t('search.anyBeds'), !state.beds) + [1, 2, 3, 4, 5].map((n) => opt(n, t('search.bedsMin', { n: fmtNum(n) }), String(n) === state.beds)).join('');
-  $('f-price-label').innerHTML = `${t('search.price')} <span class="text-sm font-normal text-ink-soft">(${t(state.status === 'rent' ? 'search.priceNoteRent' : 'search.priceNoteSale')})</span>`;
+  $('f-price-label').textContent = t(state.status === 'rent' ? 'search.priceRent' : 'search.price');
   setMode(state.status);
 }
 

@@ -5,26 +5,34 @@
 const U = (id, w, h) =>
   `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=70&auto=format`;
 
-// Photos from Unsplash (free licence). `credit` lists them in the footer.
+// Photos: Unsplash (free licence, `id`) and Wikimedia Commons (CC BY / CC BY-SA, `commons`, copied to assets/img) with credits shown in the footer.
+// Commons photos show real Jeddah (Al-Balad and the waterfront); Unsplash photos show homes and interiors.
 export const photos = {
-  hero: { id: '1512917774080-9991f1c4c750', alt: { ar: 'فيلا بيضاء حديثة بواجهات زجاجية ومسبح تحت ضوء النهار', en: 'Modern white villa with glass walls and a pool in bright daylight' } },
+  hero: { commons: { file: 'old-jeddah-roshan-white.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55361084747.jpg' }, alt: { ar: 'مبنى مبيّض بالجير بصناديق رواشين خشبية منحوتة في البلد بجدة', en: 'Lime-plastered building with carved timber roshan boxes in Al-Balad, Jeddah' } },
   p1: { id: '1600596542815-ffad4c1539a9', alt: { ar: 'فيلا بيضاء من طابقين ومسبح أمامها', en: 'Two-storey white villa with a pool in front' } },
   p2: { id: '1600607687939-ce8a6c25118c', alt: { ar: 'صالة معيشة واسعة بأريكة بيضاء وجدار خشبي', en: 'Spacious living room with a white sofa and a timber wall' } },
   p3: { id: '1580587771525-78b9dba3b914', alt: { ar: 'منزل حديث بمسبح ممتد وأسطح بيضاء', en: 'Modern townhouse with a long pool and white terraces' } },
   p4: { id: '1574362848149-11496d93a7c7', alt: { ar: 'مبنى سكني بشرفات خشبية وزجاجية', en: 'Apartment building with timber and glass balconies' } },
   p5: { id: '1613490493576-7fde63acd811', alt: { ar: 'فيلا بسقف خشبي ومسبح يعكس الضوء', en: 'Villa with a timber roof and a pool catching the light' } },
-  p6: { id: '1522708323590-d24dbb6b0267', alt: { ar: 'شقة مضيئة بمطبخ مفتوح وكرسي أحمر', en: 'Bright apartment with an open kitchen and a red armchair' } },
-  p7: { id: '1545324418-cc1a3fa10c00', alt: { ar: 'واجهة عمارة سكنية بشرفات زجاجية', en: 'Residential tower facade with glass balconies' } },
+  p6: { commons: { file: 'old-jeddah-street.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362436320.jpg' }, alt: { ar: 'شارع في البلد ببناء أبيض ونخلة ورواشين داكنة', en: 'Street in Al-Balad with a white building, a palm and dark timber roshans' } },
+  p7: { commons: { file: 'jeddah-waterfront-evening.jpg', author: { ar: 'وكالة الأنباء السعودية', en: 'Saudi Press Agency' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:%D9%88%D8%A7%D8%AC%D9%87%D8%A9_%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%AC%D8%AF%D8%A9_%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9_%D9%81%D9%8A_%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%A1.jpg' }, alt: { ar: 'واجهة جدة البحرية في المساء', en: 'Jeddah waterfront in the evening' } },
   p8: { id: '1582268611958-ebfd161ef9cf', alt: { ar: 'فيلا بسقف ممتد ومسبح وأسطح للجلوس', en: 'Villa with a deep roof, a pool and a seating terrace' } },
   p9: { id: '1493809842364-78817add7ffb', alt: { ar: 'غرفة جلوس بنوافذ كبيرة وأرضية خشبية', en: 'Sitting room with large windows and a timber floor' } },
-  n1: { id: '1523217582562-09d0def993a6', alt: { ar: 'منزل مبيّض بالجير بنوافذ مربعة صغيرة', en: 'Lime-plastered house with small square windows' } },
+  p10: { commons: { file: 'old-jeddah-corner-building.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362214124.jpg' }, alt: { ar: 'مبنى من أربعة طوابق بنوافذ خشبية مقوسة عند ناصية في البلد', en: 'Four-storey corner building with arched timber windows in Al-Balad' } },
+  p11: { commons: { file: 'old-jeddah-restored.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362217344.jpg' }, alt: { ar: 'مبانٍ مرمَّمة في حي البلد التاريخي في وضح النهار', en: 'Restored buildings in the historic Al-Balad district in daylight' } },
+  p12: { id: '1556912172-45b7abe8b7e1', alt: { ar: 'مطبخ أبيض مضيء بجزيرة خشبية وكراسي', en: 'Bright white kitchen with a timber island and stools' } },
+  n1: { commons: { file: 'old-jeddah-roshan-balconies.jpg', author: { ar: 'xiquinhosilva', en: 'xiquinhosilva' }, licence: 'CC BY 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_-_55362178648.jpg' }, alt: { ar: 'واجهة بيت قديم بشرفات ورواشين خشبية متراصة في جدة التاريخية', en: 'Old house facade stacked with timber roshan balconies in historic Jeddah' } },
   n2: { id: '1600566753190-17f0baa2a6c3', alt: { ar: 'منزل حديث بواجهة خشبية وفناء أمامي', en: 'Modern house with a timber facade and a front court' } },
-  n3: { id: '1512453979798-5ea266f8880c', alt: { ar: 'أفق مدينة ساحلية عند الغروب', en: 'Coastal city skyline at sunset' } },
+  n3: { commons: { file: 'jeddah-waterfront-coast.jpg', author: { ar: 'مصوّر غير معروف', en: 'Unknown author' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Jeddah_Waterfront,_Western_Saudi_Arabia_(2026).jpg' }, alt: { ar: 'ساحل جدة على البحر الأحمر وطريق الواجهة البحرية وأبراج المدينة', en: 'Jeddah’s Red Sea coast, the waterfront road and the city towers' } },
   n4: { id: '1600585154340-be6161a56a0c', alt: { ar: 'منزل بجانب أشجار كبيرة عند الغروب', en: 'House beside large trees at dusk' } },
   n5: { id: '1486406146926-c627a92ad1ab', alt: { ar: 'أبراج زجاجية من الأسفل نحو السماء', en: 'Glass towers seen from below against the sky' } },
 };
 
-export const photoUrl = (key, w, h) => U(photos[key].id, w, h);
+// Photo URL for a given display size. Commons photos are self-hosted in assets/img (960px wide copies, credited in the footer).
+export const photoUrl = (key, w, h) => {
+  const ph = photos[key];
+  return ph.commons ? `assets/img/${ph.commons.file}` : U(ph.id, w, h);
+};
 
 export const neighbourhoods = [
   { id: 'albalad', photo: 'n1', name: { ar: 'البلد', en: 'Al-Balad' }, line: { ar: 'المدينة التاريخية: بيوت مرجانية ورواشين خشبية، وشقق بإيجار سنوي.', en: 'The historic quarter: coral-stone houses and timber roshans, mostly annual rentals.' } },
@@ -63,6 +71,15 @@ export const listings = [
   { id: 'l9', slug: 'apartment-alhamra-110', status: 'rent', type: 'apartment', hood: 'alhamra', price: 52000, area: 110, beds: 2, baths: 2, photo: 'p9',
     title: { ar: 'شقة غرفتان في الحمراء', en: 'Two-bedroom apartment in Al-Hamra' },
     line: { ar: 'مفروشة جزئياً، ويمكن الدفع على دفعتين.', en: 'Partly furnished; rent can be paid in two instalments.' } },
+  { id: 'l10', slug: 'house-albalad-260', status: 'sale', type: 'townhouse', hood: 'albalad', price: 2900000, area: 260, beds: 6, baths: 4, photo: 'p10',
+    title: { ar: 'بيت مرمَّم في البلد', en: 'Restored house in Al-Balad' },
+    line: { ar: 'ثلاثة طوابق برواشين أصلية؛ نوضح لك قيود الترميم قبل أي عرض.', en: 'Three floors with original roshans; we explain the restoration rules before any offer.' } },
+  { id: 'l11', slug: 'apartment-albalad-70', status: 'rent', type: 'apartment', hood: 'albalad', price: 28000, area: 70, beds: 1, baths: 1, photo: 'p11',
+    title: { ar: 'شقة غرفة واحدة في البلد', en: 'One-bedroom apartment in Al-Balad' },
+    line: { ar: 'فوق محل مرمَّم، سقف عالٍ وإيجار سنوي.', en: 'Above a restored shopfront, high ceilings, annual lease.' } },
+  { id: 'l12', slug: 'apartment-alrawdah-100', status: 'rent', type: 'apartment', hood: 'alrawdah', price: 64000, area: 100, beds: 2, baths: 2, photo: 'p12',
+    title: { ar: 'شقة غرفتان في الروضة', en: 'Two-bedroom apartment in Al-Rawdah' },
+    line: { ar: 'مطبخ جديد ومدرسة على بعد خمس دقائق سيراً.', en: 'New kitchen and a school five minutes on foot.' } },
 ];
 
 export const agents = [
@@ -112,10 +129,9 @@ export const content = {
     search: {
       title: 'ابحث عن عقار',
       legendMode: 'نوع الصفقة', buy: 'شراء', rent: 'إيجار',
-      type: 'نوع العقار', hood: 'الحيّ', price: 'السعر الأقصى', beds: 'غرف النوم',
+      type: 'نوع العقار', hood: 'الحيّ', price: 'السعر الأقصى', priceRent: 'السعر الأقصى للسنة', beds: 'غرف النوم',
       any: 'الكل', anyHood: 'كل الأحياء', anyPrice: 'بدون حد', anyBeds: 'أي عدد',
       bedsMin: '{n}+', reset: 'مسح الاختيارات',
-      priceNoteSale: 'بالريال السعودي', priceNoteRent: 'بالريال السعودي للسنة',
       types: { apartment: 'شقة', villa: 'فيلا', townhouse: 'تاون هاوس' },
     },
     listings: {
@@ -194,8 +210,9 @@ export const content = {
       hours: 'السبت إلى الخميس، 9 صباحاً إلى 6 مساءً',
       linksTitle: 'الصفحة',
       creditsTitle: 'مصادر الصور',
-      creditsLead: 'الصور من Unsplash بترخيص مجاني. وتصميم الصفحة مبني على قوالب مفتوحة المصدر.',
+      creditsLead: 'صور البلد والواجهة البحرية من ويكيميديا كومنز بترخيص CC BY أو CC BY-SA، وباقي الصور من Unsplash بترخيص مجاني. وتصميم الصفحة مبني على قوالب مفتوحة المصدر.',
       creditsItem: 'صورة {n} على Unsplash',
+      creditsItemCommons: 'صورة {n}: {author}، {licence}',
       rights: 'منزل العقارية، جدة.',
     },
     noscript: 'تحتاج هذه الصفحة إلى تفعيل JavaScript لعرض العقارات.',
@@ -223,10 +240,9 @@ export const content = {
     search: {
       title: 'Find a property',
       legendMode: 'Deal type', buy: 'Buy', rent: 'Rent',
-      type: 'Property type', hood: 'Neighbourhood', price: 'Maximum price', beds: 'Bedrooms',
+      type: 'Property type', hood: 'Neighbourhood', price: 'Maximum price', priceRent: 'Maximum price per year', beds: 'Bedrooms',
       any: 'Any', anyHood: 'All neighbourhoods', anyPrice: 'No limit', anyBeds: 'Any number',
       bedsMin: '{n}+', reset: 'Clear choices',
-      priceNoteSale: 'In Saudi riyals', priceNoteRent: 'In Saudi riyals per year',
       types: { apartment: 'Apartment', villa: 'Villa', townhouse: 'Townhouse' },
     },
     listings: {
@@ -305,8 +321,9 @@ export const content = {
       hours: 'Saturday to Thursday, 9:00 to 18:00',
       linksTitle: 'On this page',
       creditsTitle: 'Photo credits',
-      creditsLead: 'Photos are from Unsplash under its free licence. The page design adapts open-source templates.',
+      creditsLead: 'The Al-Balad and waterfront photos are from Wikimedia Commons (CC BY or CC BY-SA); the other photos are from Unsplash under its free licence. The page design adapts open-source templates.',
       creditsItem: 'Photo {n} on Unsplash',
+      creditsItemCommons: 'Photo {n}: {author}, {licence}',
       rights: 'Manzil Realty, Jeddah.',
     },
     noscript: 'This page needs JavaScript to show the homes.',
