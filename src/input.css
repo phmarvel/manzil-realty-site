@@ -16,6 +16,12 @@
     jiss on teak 11.8 | hajar on teak 8.7 | paper on teak 12.9
     field-edge on paper 4.1 | field-edge on jiss 3.8 (input borders, 3:1 needed)
   Focus rings: ring (bahr) on jiss 6.5:1, on paper 7.1:1; ring-dark (jiss) on teak 11.8:1.
+
+  MNZ-4 WhatsApp contact button (computed by script):
+    jiss on wa 5.7 | jiss on wa-deep 7.0 (hover) | jiss on wa-press 9.0 (active)
+    wa on jiss 5.7 | wa on paper 6.2 | wa on hajar 4.2 (button edge, 3:1 needed)
+    wa on teak 2.1 (too low, so on dark bands the button has a 2px jiss border: jiss on teak 11.8)
+    Focus rings of the button: ring (bahr) on jiss 6.5:1, on paper 7.1:1; ring-dark (jiss) on teak 11.8:1.
 */
 
 @font-face { font-family: "IBM Plex Sans Arabic"; font-weight: 400; font-style: normal; font-display: swap;
@@ -50,6 +56,10 @@
   --color-paper: #FBF8F2;
   --color-ink-soft: #5A4535;
   --color-bahr-deep: #0A4448;
+  /* MNZ-4 WhatsApp contact button */
+  --color-wa: #0B6B3A;
+  --color-wa-deep: #0A5C32;
+  --color-wa-press: #084A28;
   --color-field-edge: #8A7660;
   --color-white: #FFFFFF;
 
@@ -169,6 +179,12 @@ a, button, summary, label { touch-action: manipulation; }
   .seg label:has(input:focus-visible) { outline: 3px solid var(--ring); outline-offset: 2px; }
   .seg label + label { border-inline-start: 1.5px solid var(--color-field-edge); }
 
+  /* MNZ-4 WhatsApp contact button */
+  .btn-wa { background: var(--color-wa); color: var(--color-jiss); }
+  .btn-wa:hover { background: var(--color-wa-deep); }
+  .btn-wa:active { background: var(--color-wa-press); }
+  .on-dark .btn-wa { border-color: var(--color-jiss); }
+
   .card { background: var(--color-paper); border: 1px solid var(--color-hajar); border-radius: var(--radius-md); overflow: clip; }
 
   /* Roshan lattice: a mask so one SVG takes any colour */
@@ -177,6 +193,29 @@ a, button, summary, label { touch-action: manipulation; }
   .roshan-frame::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: currentColor; -webkit-mask-image: var(--lattice); mask-image: var(--lattice); -webkit-mask-size: 24px 24px; mask-size: 24px 24px; -webkit-mask-position: center; mask-position: center; opacity: .75; }
   .roshan-frame > img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-top-left-radius: 999px; border-top-right-radius: 999px; border-bottom-left-radius: var(--radius-sm); border-bottom-right-radius: var(--radius-sm); background: var(--color-hajar); }
 }
+
+/* === Listing detail pages === */
+@source "../listing.html";
+@layer components {
+  /* Card title link on the landing page: the whole card opens the detail page; the "ask" button stays on top. */
+  .card:has(.card-link) { position: relative; transition: border-color .15s; }
+  .card:has(.card-link:hover) { border-color: var(--color-bahr); }
+  .card-link::after { content: ""; position: absolute; inset: 0; }
+  .card-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .card-link:focus-visible { outline: none; }
+  .card-link:focus-visible::after { outline: 3px solid var(--ring); outline-offset: -3px; border-radius: var(--radius-md); }
+  .card [data-ask] { position: relative; z-index: 1; }
+
+  /* Gallery thumbnails: the current one gets a teal border (bahr on paper/jiss 6.5:1+); focus uses the normal ring. */
+  /* The form column sticks only when the viewport is tall enough to show all of it. */
+  @media (min-width: 64rem) and (min-height: 60rem) { .detail-aside { position: sticky; top: 6rem; } }
+
+  .thumb { transition: border-color .15s; }
+  .thumb:hover { border-color: var(--color-hajar); }
+  .thumb[aria-current="true"]:hover { border-color: var(--color-bahr); }
+}
+/* MNZ-4 WhatsApp contact button: header at 1024 to 1279px keeps the five links, the language switch, WhatsApp and the CTA on one line (unlayered, so it beats the utilities) */
+@media (min-width: 64rem) and (max-width: 79.99rem) { #nav-desktop { gap: 0; } #nav-desktop a { padding-inline: .375rem; white-space: nowrap; } header .btn { white-space: nowrap; padding-inline: .75rem; } }
 
 @layer components {
   .light-panel { --ring: #0F5E63; }

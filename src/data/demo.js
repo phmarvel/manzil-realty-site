@@ -82,6 +82,51 @@ export const listings = [
     line: { ar: 'مطبخ جديد ومدرسة على بعد خمس دقائق سيراً.', en: 'New kitchen and a school five minutes on foot.' } },
 ];
 
+// === Listing detail pages ===
+// Detail data for listing.html, joined to `listings` by id, to `agents` by agentId and to `neighbourhoods` by id. All demo.
+// Three more Al-Balad photos (Wikimedia Commons, self-hosted in assets/img); the footer credits list every entry of `photos`.
+Object.assign(photos, {
+  d1: { commons: { file: 'old-jeddah-3.jpg', author: { ar: 'Tahir mq', en: 'Tahir mq' }, licence: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_3.jpg' }, alt: { ar: 'زقاق مضاء في سوق البلد ليلاً بين محلات ومبانٍ برواشين خشبية', en: 'A lit lane in the Al-Balad souq at night between shops and timber-roshan buildings' } },
+  d2: { commons: { file: 'old-jeddah-5.jpg', author: { ar: 'Radosław Botev', en: 'Radosław Botev' }, licence: 'CC BY 3.0 pl', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_(5).jpg' }, alt: { ar: 'ساحة في البلد أمام مبنى برواشين خضراء وطاولات مقهى مفتوحة', en: 'A square in Al-Balad in front of a building with green roshans and open café tables' } },
+  d3: { commons: { file: 'old-jeddah-8.jpg', author: { ar: 'Radosław Botev', en: 'Radosław Botev' }, licence: 'CC BY 3.0 pl', page: 'https://commons.wikimedia.org/wiki/File:Old_Jeddah_(8).jpg' }, alt: { ar: 'مبنى أبيض من أربعة طوابق برواشين بنية وأبواب خشبية في البلد', en: 'A four-storey white building with brown roshans and timber doors in Al-Balad' } },
+});
+
+// gallery: keys of `photos` (the first is shown large). facts: built year, level, parking spaces, furnished (no | partly | yes).
+export const listingDetails = {
+  l1: { gallery: ['p1', 'p5', 'p2', 'n3'], agentId: 'a1', facts: { built: 2019, parking: 3, furnished: 'no', level: { ar: 'طابقان وسطح', en: 'Two floors and a roof' } },
+    desc: { ar: 'فيلا من طابقين على قطعة مساحتها أكبر من مساحة البناء، فيها مجلس منفصل بمدخل خاص وغرفة سائق. المسبح في الواجهة الخلفية، والشارع هادئ بعد التاسعة مساءً. نراجع معك أسعار الفلل المشابهة في الحي قبل أن تقدّم أي عرض.', en: 'A two-storey villa on a plot larger than the building, with a separate majlis that has its own entrance and a driver’s room. The pool is at the back, and the street is quiet after nine in the evening. We go through comparable villa prices in the district with you before you make any offer.' } },
+  l2: { gallery: ['p2', 'p12', 'p4', 'n2'], agentId: 'a3', facts: { built: 2020, parking: 1, furnished: 'no', level: { ar: 'الطابق الرابع', en: 'Fourth floor' } },
+    desc: { ar: 'شقة في الطابق الرابع بثلاث غرف نوم وصالة واسعة تدخلها الشمس صباحاً. في المبنى مصعد وموقف خاص للشقة. المدرسة والحديقة على بعد عشر دقائق سيراً، وهذا ما تسأل عنه معظم العائلات.', en: 'A fourth-floor apartment with three bedrooms and a wide living room that gets morning sun. The building has a lift and a parking space for the flat. A school and a park are ten minutes on foot, which is what most families ask about first.' } },
+  l3: { gallery: ['p3', 'p8', 'p9', 'n4'], agentId: 'a1', facts: { built: 2021, parking: 2, furnished: 'no', level: { ar: 'طابقان وسطح', en: 'Two floors and a roof' } },
+    desc: { ar: 'تاون هاوس بأربع غرف نوم وحديقة صغيرة في الخلف وسطح يصلح للجلسات المسائية. الطريق إلى البحر نحو عشر دقائق بالسيارة. الجيران عائلات، ورسوم الصيانة المشتركة معلنة قبل التوقيع.', en: 'A townhouse with four bedrooms, a small back garden and a roof terrace for evenings. The sea is about ten minutes by car. The neighbours are families, and the shared maintenance fee is stated before you sign.' } },
+  l4: { gallery: ['p4', 'p9', 'p12', 'n5'], agentId: 'a3', facts: { built: 2016, parking: 1, furnished: 'no', level: { ar: 'الطابق السادس', en: 'Sixth floor' } },
+    desc: { ar: 'شقة بغرفتين وشرفة على الشارع الرئيسي، مناسبة لأسرة صغيرة أو لموظف يريد القرب من مكتبه. الأصوات من الشارع حاضرة نهاراً وتخف مساءً. نشرح لك خطوات التمويل العقاري إن احتجت إليه.', en: 'A two-bedroom apartment with a balcony on the main street, suited to a small family or someone who wants to be near the office. Street noise is there by day and eases in the evening. We explain the mortgage steps if you need them.' } },
+  l5: { gallery: ['p5', 'p1', 'p12', 'n2'], agentId: 'a3', facts: { built: 2017, parking: 2, furnished: 'no', level: { ar: 'طابقان', en: 'Two floors' } },
+    desc: { ar: 'فيلا بخمس غرف نوم ومسبح وحديقة، في شارع سكني. السعر المطلوب قابل للنقاش بعد المعاينة، ونعرض عليك أسعار صفقات مشابهة قبل أن تتفاوض.', en: 'A five-bedroom villa with a pool and garden on a residential street. The asking price can be discussed after a viewing, and we show you comparable sale prices before you negotiate.' } },
+  l6: { gallery: ['p6', 'd3', 'p9', 'd1'], agentId: 'a2', facts: { built: 1950, parking: 0, furnished: 'no', level: { ar: 'الطابق الثاني', en: 'Second floor' } },
+    desc: { ar: 'شقة بغرفتين في مبنى مرمَّم قرب باب شريف، بسقف عالٍ ونوافذ خشبية. لا يوجد موقف خاص، والمشي إلى السوق دقائق. الإيجار سنوي، وتشرح لك ريم بنود العقد قبل التوقيع.', en: 'A two-bedroom apartment in a restored building near Bab Sharif, with high ceilings and timber windows. There is no private parking, and the souq is a few minutes’ walk. The lease is annual, and Reem goes through its terms before you sign.' } },
+  l7: { gallery: ['p7', 'p2', 'p12', 'n3'], agentId: 'a2', facts: { built: 2018, parking: 1, furnished: 'partly', level: { ar: 'الطابق التاسع', en: 'Ninth floor' } },
+    desc: { ar: 'شقة بثلاث غرف في طابق مرتفع، تُرى منها زاوية من البحر. صيانة المبنى مشمولة في الإيجار، وفي المبنى مصعدان وحارس. مفروشة جزئياً بالمطبخ والمكيفات.', en: 'A three-bedroom apartment on a high floor with a side view of the sea. Building maintenance is included in the rent, and the building has two lifts and a guard. Partly furnished with the kitchen and air conditioners.' } },
+  l8: { gallery: ['p8', 'p3', 'p12', 'n4'], agentId: 'a2', facts: { built: 2015, parking: 3, furnished: 'no', level: { ar: 'طابقان', en: 'Two floors' } },
+    desc: { ar: 'فيلا للإيجار بخمس غرف نوم، تشترك بالمسبح مع فيلتين فقط، وفيها ملحق للسائق. الحي هادئ وبعيد عن زحام المدينة. الإيجار سنوي ويمكن مناقشة الدفع على دفعتين.', en: 'A five-bedroom villa for rent that shares its pool with just two other villas, with a driver’s annex. The district is quiet and away from city traffic. The lease is annual and payment in two instalments can be discussed.' } },
+  l9: { gallery: ['p9', 'p2', 'p12', 'n5'], agentId: 'a2', facts: { built: 2014, parking: 1, furnished: 'partly', level: { ar: 'الطابق الثالث', en: 'Third floor' } },
+    desc: { ar: 'شقة بغرفتين قرب شارع التحلية، مفروشة جزئياً، ويمكن دفع الإيجار على دفعتين. المقاهي والمكاتب على بعد خطوات، والمبنى فيه مصعد.', en: 'A two-bedroom apartment near Tahlia Street, partly furnished, with rent payable in two instalments. Cafés and offices are a few steps away, and the building has a lift.' } },
+  l10: { gallery: ['p10', 'd2', 'd3', 'p2'], agentId: 'a1', facts: { built: 1935, parking: 0, furnished: 'no', level: { ar: 'ثلاثة طوابق', en: 'Three floors' } },
+    desc: { ar: 'بيت قديم مرمَّم من ثلاثة طوابق بستة غرف نوم ورواشين أصلية على الواجهة. للمباني في البلد قيود ترميم وتراخيص خاصة، ونشرحها لك كاملة قبل أي عرض. لا يوجد موقف داخل البيت.', en: 'A restored three-floor house with six bedrooms and its original roshans on the facade. Buildings in Al-Balad come with restoration rules and special permits, and we explain them in full before any offer. There is no parking inside the house.' } },
+  l11: { gallery: ['p11', 'd3', 'p9', 'd1'], agentId: 'a2', facts: { built: 1960, parking: 0, furnished: 'no', level: { ar: 'فوق محل مرمَّم', en: 'Above a restored shopfront' } },
+    desc: { ar: 'شقة بغرفة واحدة فوق محل مرمَّم، بسقف عالٍ ونافذة تطل على زقاق السوق. مناسبة لشخص أو زوجين يريدان السكن في قلب البلد. الإيجار سنوي.', en: 'A one-bedroom apartment above a restored shopfront, with a high ceiling and a window onto a souq lane. Suited to one person or a couple who want to live in the heart of Al-Balad. The lease is annual.' } },
+  l12: { gallery: ['p12', 'p2', 'p9', 'n2'], agentId: 'a2', facts: { built: 2022, parking: 1, furnished: 'no', level: { ar: 'الطابق الثاني', en: 'Second floor' } },
+    desc: { ar: 'شقة بغرفتين ومطبخ جديد، والمدرسة على بعد خمس دقائق سيراً. المبنى حديث وهادئ ومناسب لعائلة صغيرة. الإيجار سنوي.', en: 'A two-bedroom apartment with a new kitchen, and a school five minutes on foot. The building is new and quiet, suited to a small family. The lease is annual.' } },
+};
+
+export const hoodAbout = {
+  albalad: { ar: 'البلد هي جدة التاريخية، ومسجّلة في قائمة التراث العالمي. الأزقة ضيقة والمشي فيها هو الوسيلة الأسهل، والمباني مرجانية برواشين خشبية. الترميم يحتاج إلى موافقات، ونعرّفك بها قبل الشراء.', en: 'Al-Balad is historic Jeddah, listed as a World Heritage site. The lanes are narrow and walking is the easy way in, and the buildings are coral stone with timber roshans. Restoration needs approvals, and we explain them before you buy.' },
+  alshati: { ar: 'الشاطئ حيّ قريب من الكورنيش، فيه فلل وشقق مرتفعة بإطلالات بحرية. المشي على الواجهة البحرية مساءً من أسباب اختيار الحي، والأسعار فيه من الأعلى في المدينة.', en: 'Al-Shati is next to the Corniche, with villas and tall apartment blocks facing the sea. An evening walk on the waterfront is a big reason people choose it, and prices are among the city’s highest.' },
+  alrawdah: { ar: 'الروضة حيّ سكني هادئ فيه مدارس وحدائق ومحلات قريبة. الشوارع واسعة وفيها نخيل، وهو من أكثر الأحياء طلباً بين العائلات.', en: 'Al-Rawdah is a quiet residential district with schools, parks and shops nearby. The streets are wide and lined with palms, and families ask for it more than almost any other district.' },
+  obhur: { ar: 'أبحر شمال المدينة، وفيه قطع أكبر ومنازل بمسابح وقنوات بحرية. تحتاج فيه إلى سيارة، وفي المقابل تحصل على مساحة وهدوء أكثر.', en: 'Obhur is north of the city, with larger plots, homes with pools and sea inlets. You need a car there, and in return you get more space and quiet.' },
+  alandalus: { ar: 'الأندلس قريب من شارع التحلية والمكاتب والمقاهي، ومعظم مبانيه شقق. مناسب لمن يريد أن يكون قريباً من عمله ومن الخدمات.', en: 'Al-Andalus is close to Tahlia Street, offices and cafés, and most of its buildings are apartments. It suits people who want to be near work and services.' },
+};
+
 export const agents = [
   { id: 'a1', name: { ar: 'فيصل الغامدي', en: 'Faisal Al-Ghamdi' }, initials: { ar: 'ف غ', en: 'FG' }, phone: '+966 12 555 0141',
     role: { ar: 'مستشار مبيعات', en: 'Sales advisor' },
@@ -103,6 +148,33 @@ export const agents = [
 export const company = {
   phone: '+966 12 555 0100',
   email: 'hello@manzil-realty.example',
+};
+
+// MNZ-4 WhatsApp contact button. Demo numbers (international format, digits only): swap them here.
+// Agents are joined by id; the texts are attached to content.ar / content.en under the same comment.
+export const whatsapp = {
+  agency: '966555010100',
+  agents: { a1: '966555010141', a2: '966555010142', a3: '966555010143' },
+};
+export const whatsappText = {
+  ar: {
+    short: 'واتساب',
+    label: 'تواصل عبر واتساب',
+    agent: 'راسل {name} عبر واتساب',
+    opens: 'يفتح في نافذة جديدة',
+    general: 'مرحباً منزل العقارية، أريد الاستفسار عن عقار في جدة.',
+    hood: 'مرحباً منزل العقارية، أريد الاستفسار عن العقارات في حي {hood}.',
+    agentMsg: 'مرحباً {name}، أريد الاستفسار عن عقار في {areas}.',
+  },
+  en: {
+    short: 'WhatsApp',
+    label: 'Chat on WhatsApp',
+    agent: 'Message {name} on WhatsApp',
+    opens: 'Opens in a new window',
+    general: 'Hello Manzil Realty, I’d like to ask about a home in Jeddah.',
+    hood: 'Hello Manzil Realty, I’d like to ask about homes in {hood}.',
+    agentMsg: 'Hello {name}, I’d like to ask about a home in {areas}.',
+  },
 };
 
 export const content = {
@@ -233,6 +305,32 @@ export const content = {
         hintPriceRent: 'بالريال للسنة وبالأرقام فقط، مثل 80000. اتركه فارغاً لعرض كل الأسعار.',
       },
     },
+    // === Listing detail pages ===
+    listing: {
+      pageTitle: '{title} | منزل العقارية',
+      back: 'العودة إلى العقارات',
+      notFoundTitle: 'لم نجد هذا العقار',
+      notFoundBody: 'ربما بيع العقار أو أُجّر، أو أن الرابط ناقص. شاهد العقارات المعروضة الآن، أو اترك لنا طلبك.',
+      notFoundCta: 'عرض العقارات',
+      galleryLabel: 'صور العقار',
+      prev: 'الصورة السابقة', next: 'الصورة التالية', photoOf: 'صورة {n} من {total}', showPhoto: 'اعرض الصورة {n}',
+      statArea: 'الحيّ', statSize: 'المساحة', statBeds: 'غرف النوم', statBaths: 'الحمامات',
+      descTitle: 'عن هذا العقار',
+      factsTitle: 'معلومات أساسية',
+      facts: { deal: 'الصفقة', type: 'النوع', built: 'سنة البناء', level: 'الطابق', parking: 'المواقف', furnished: 'الفرش', perM2: 'سعر المتر' },
+      perM2Unit: 'للمتر المربع',
+      furnished: { no: 'غير مفروشة', partly: 'مفروشة جزئياً', yes: 'مفروشة' },
+      parkingN: { zero: 'لا يوجد موقف خاص', one: 'موقف واحد', two: 'موقفان', few: '{n} مواقف', many: '{n} موقفاً', other: '{n} موقف' },
+      hoodTitle: 'عن حيّ {name}',
+      hoodLink: 'اعرض عقارات {name}',
+      agentTitle: 'مستشارك في هذا العقار',
+      agentLead: 'يجيب عن أسئلتك بنفسه ويرتّب معك موعد المعاينة.',
+      formTitle: 'اسأل عن هذا العقار أو احجز معاينة',
+      formLead: 'سنتصل بك خلال يوم عمل واحد. لا نطلب أي مبلغ.',
+      asking: 'تسأل عن: {title}',
+    },
+    // MNZ-4 WhatsApp contact button
+    whatsapp: whatsappText.ar,
     footer: {
       about: 'منزل العقارية وسيط عقاري في جدة، يبيع ويؤجّر الشقق والفلل بأسعار معلنة.',
       contactTitle: 'التواصل',
@@ -375,6 +473,32 @@ export const content = {
         hintPriceRent: 'In riyals per year, digits only, like 80000. Leave empty to see every price.',
       },
     },
+    // === Listing detail pages ===
+    listing: {
+      pageTitle: '{title} | Manzil Realty',
+      back: 'Back to homes',
+      notFoundTitle: 'We could not find this home',
+      notFoundBody: 'It may have been sold or let, or the link may be incomplete. See the homes available now, or leave us your request.',
+      notFoundCta: 'See homes',
+      galleryLabel: 'Photos of this home',
+      prev: 'Previous photo', next: 'Next photo', photoOf: 'Photo {n} of {total}', showPhoto: 'Show photo {n}',
+      statArea: 'Neighbourhood', statSize: 'Size', statBeds: 'Bedrooms', statBaths: 'Bathrooms',
+      descTitle: 'About this home',
+      factsTitle: 'Key facts',
+      facts: { deal: 'Deal', type: 'Type', built: 'Built', level: 'Level', parking: 'Parking', furnished: 'Furnishing', perM2: 'Price per m²' },
+      perM2Unit: 'per m²',
+      furnished: { no: 'Unfurnished', partly: 'Partly furnished', yes: 'Furnished' },
+      parkingN: { zero: 'No private parking', one: '1 space', two: '2 spaces', few: '{n} spaces', many: '{n} spaces', other: '{n} spaces' },
+      hoodTitle: 'About {name}',
+      hoodLink: 'See homes in {name}',
+      agentTitle: 'Your advisor for this home',
+      agentLead: 'Answers your questions personally and arranges the viewing with you.',
+      formTitle: 'Ask about this home or book a viewing',
+      formLead: 'We will call within one working day. We never ask for payment.',
+      asking: 'Asking about: {title}',
+    },
+    // MNZ-4 WhatsApp contact button
+    whatsapp: whatsappText.en,
     footer: {
       about: 'Manzil Realty is a real estate broker in Jeddah selling and renting apartments and villas at stated prices.',
       contactTitle: 'Contact',

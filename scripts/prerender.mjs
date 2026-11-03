@@ -6,7 +6,7 @@ import { content } from '../src/data/demo.js';
 const ar = content.ar;
 const get = (path) => path.split('.').reduce((o, k) => o?.[k], ar);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-const file = new URL('../index.html', import.meta.url);
+const file = new URL(`../${process.argv[2] ?? 'index.html'}`, import.meta.url); // page to prerender; default index.html
 let html = readFileSync(file, 'utf8');
 
 html = html.replace(/<([a-z0-9]+)\b([^>]*?)data-i18n="([^"]+)"([^>]*)>([^<]*)<\/\1>/g, (m, tag, a, path, b, _old) => {
