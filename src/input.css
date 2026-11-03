@@ -147,6 +147,29 @@ a, button, summary, label { touch-action: manipulation; }
   .err { display: flex; gap: .5rem; align-items: flex-start; margin-top: .375rem; color: var(--color-henna); font-size: var(--text-sm); font-weight: 500; }
   .err[hidden] { display: none; }
 
+  /* MNZ-5: Inquiry and viewing form and search filters to the forms standard
+     Colour pairs used here are already listed above: teak/jiss on teak chips, ink-soft on jiss (disabled), teak on jiss (read-only), henna on paper (errors). */
+  .hint-under { margin-top: -.125rem; margin-bottom: .375rem; }
+  .field:focus-visible { border-color: var(--ring); }
+  .field[aria-invalid="true"]:hover { border-color: var(--color-henna); }
+  .field:disabled { background: var(--color-jiss); color: var(--color-ink-soft); border-color: var(--color-hajar); cursor: not-allowed; }
+  .field[readonly] { background: var(--color-jiss); border-style: dashed; }
+  /* Radio choices that wrap (viewing times): real radios drawn as chips */
+  .chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+  @media (min-width: 40rem) { .chips { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .chips label { position: relative; display: flex; align-items: center; justify-content: center; min-height: 3rem; min-width: 3rem; padding-inline: .5rem; border: 1.5px solid var(--color-field-edge); border-radius: var(--radius-sm); background: var(--color-paper); font-weight: 500; text-align: center; cursor: pointer; transition: background-color .15s, color .15s; }
+  .chips label:hover { background: var(--color-hajar); }
+  .chips input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .chips label:has(input:checked) { background: var(--color-teak); border-color: var(--color-teak); color: var(--color-jiss); font-weight: 700; }
+  .chips label:has(input:focus-visible) { outline: 3px solid var(--ring); outline-offset: 2px; }
+  fieldset[aria-invalid="true"] .chips label { border-color: var(--color-henna); }
+  .spin { animation: mnz5-spin .9s linear infinite; transform-origin: center; }
+  @keyframes mnz5-spin { to { transform: rotate(360deg); } }
+  /* Hints in the filter bar: read by screen readers always, shown under the control while it has focus, so the bar keeps its height */
+  .has-pop { position: relative; }
+  .hint-pop { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .has-pop:focus-within .hint-pop { inset-inline: 0; top: calc(100% + .25rem); z-index: 30; width: auto; height: auto; margin: 0; padding: .5rem .75rem; overflow: visible; clip-path: none; white-space: normal; border-radius: var(--radius-sm); background: var(--color-teak); color: var(--color-jiss); box-shadow: var(--shadow-panel); }
+
   /* Segmented radio (buy / rent, inquiry / viewing) */
   .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1.5px solid var(--color-field-edge); border-radius: var(--radius-sm); background: var(--color-paper); overflow: clip; }
   .seg label { position: relative; display: flex; align-items: center; justify-content: center; min-height: 3rem; padding-inline: 1rem; font-weight: 500; text-align: center; cursor: pointer; transition: background-color .15s, color .15s; }

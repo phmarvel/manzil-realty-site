@@ -1,6 +1,8 @@
 // Search filters and the listing grid. State lives in the URL query (?status=rent&hood=albalad…).
 import { listings, neighbourhoods, photos, photoUrl, priceSteps } from './data/demo.js';
 import { t, tRaw, pick, plural, fmtNum, fmtMoney, getLang } from './i18n.js';
+import { filtersSchema } from './schemas/filters.js';
+import { runSchema, paintField, bindFields } from './validation.js';
 import { detailHref } from './listing-route.js';
 
 const $ = (id) => document.getElementById(id);
@@ -9,10 +11,15 @@ const setMode = (v) => { form.querySelector(`input[name="status"][value="${v}"]`
 const KEYS = ['status', 'type', 'hood', 'price', 'beds'];
 export const state = { status: 'sale', type: '', hood: '', price: '', beds: '' };
 const hoodName = (id) => pick(neighbourhoods.find((h) => h.id === id).name);
+// The typed maximum price: validated by src/schemas/filters.js; `priceField` carries its error state.
+const priceField = { name: 'price', root: $('f-price'), err: $('f-price-err'), shown: false };
+const checkPrice = () => runSchema(filtersSchema(t), { price: priceField.root.value });
 
 function readUrl() {
   const q = new URLSearchParams(location.search);
   KEYS.forEach((k) => { if (q.has(k)) state[k] = q.get(k); });
+  const p = runSchema(filtersSchema(t), { price: state.price });
+  state.price = p.ok ? p.data.price : '';
   if (state.status !== 'rent') state.status = 'sale';
 }
 function writeUrl() {
@@ -28,9 +35,15 @@ export function renderControls() {
   const types = tRaw('search.types');
   $('f-type').innerHTML = opt('', t('search.any'), !state.type) + Object.keys(types).map((k) => opt(k, types[k], state.type === k)).join('');
   $('f-hood').innerHTML = opt('', t('search.anyHood'), !state.hood) + neighbourhoods.map((h) => opt(h.id, pick(h.name), state.hood === h.id)).join('');
-  $('f-price').innerHTML = opt('', t('search.anyPrice'), !state.price) + priceSteps[state.status].map((p) => opt(p, fmtMoney(p), String(p) === state.price)).join('');
+  $('f-price-list').innerHTML = priceSteps[state.status].map((p) => `<option value="${p}" label="${fmtMoney(p)}"></option>`).join('');
+  // Keep what was typed: the field is only rewritten when the filter changed from outside (reset, buy/rent switch, URL).
+  const typed = checkPrice();
+  if (typed.data?.price !== state.price && !(priceField.shown && !typed.ok)) $('f-price').value = state.price;
+  $('f-price').placeholder = t('forms.filters.pricePh');
+  $('f-price-hint').textContent = t(state.status === 'rent' ? 'forms.filters.hintPriceRent' : 'forms.filters.hintPriceSale');
   $('f-beds').innerHTML = opt('', t('search.anyBeds'), !state.beds) + [1, 2, 3, 4, 5].map((n) => opt(n, t('search.bedsMin', { n: fmtNum(n) }), String(n) === state.beds)).join('');
   $('f-price-label').textContent = t(state.status === 'rent' ? 'search.priceRent' : 'search.price');
+  if (priceField.shown) paintField(priceField, checkPrice().errors.price || '');
   setMode(state.status);
 }
 
@@ -80,11 +93,21 @@ export function setFilters(patch) {
 export function initFilters() {
   readUrl();
   form.addEventListener('change', (e) => {
+    if (e.target.name === 'price') return; // typed: checked by the price field below
     const patch = { [e.target.name]: e.target.value };
     if (e.target.name === 'status') patch.price = '';
+    if (e.target.name === 'status') paintField(priceField, '');
     setFilters(patch);
   });
-  const reset = () => setFilters({ type: '', hood: '', price: '', beds: '' });
+  // The price is checked when the field is left (or Enter), then again on every keystroke once it shows an error.
+  const applyPrice = () => {
+    const r = checkPrice();
+    paintField(priceField, r.errors.price || '', true);
+    if (r.ok && r.data.price !== state.price) setFilters({ price: r.data.price });
+  };
+  bindFields([priceField], () => checkPrice().errors.price || '', (f, m) => { if (!m) applyPrice(); });
+  priceField.root.addEventListener('change', applyPrice);
+  const reset = () => { paintField(priceField, ''); setFilters({ type: '', hood: '', price: '', beds: '' }); };
   $('f-reset').addEventListener('click', reset);
   $('empty-reset').addEventListener('click', reset);
 }
